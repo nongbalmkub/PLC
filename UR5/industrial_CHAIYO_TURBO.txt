@@ -1,0 +1,115 @@
+ Program
+   Robot Program
+     Set DO[4]=Off
+     var_1≔0
+     var_2≔0
+     var_3≔0
+     MoveJ
+       home
+     Wait DI[0]=HI
+     If digital_in[1]
+       var_1≔1
+     If digital_in[2]
+       var_2≔1
+     If digital_in[3]
+       var_3≔1
+     Set DO[0]=On
+     Set DO[1]=On
+     Switch var_1*4+var_2*2+var_3*1
+       Case 1
+         MoveJ
+           conveyer_1_abov
+           Set DO[4]=On
+         MoveJ
+           conveyer_1
+           conveyer_1_abov
+         MoveJ
+           table_wp
+           paint_station_a
+         MoveJ
+           paint_station
+           Set DO[4]=Off
+         MoveJ
+           paint_station_a
+           table_wp
+         Wait: 7.0
+         MoveJ
+           table_wp
+           paint_station_a
+         Set DO[4]=On
+         MoveJ
+           paint_station
+           paint_station_a
+         MoveJ
+           table_wp
+           metal_conveyer_
+         MoveJ
+           metal_conveyer
+         Set DO[4]=Off
+         MoveJ
+           metal_conveyer_
+           home
+       Case 2
+         MoveJ
+           table_wp
+           paint_station_a
+         Set DO[4]=On
+         MoveJ
+           paint_station
+           paint_station_a
+         MoveJ
+           table_wp
+           metal_conveyer_
+         MoveJ
+           metal_conveyer
+         Set DO[4]=Off
+         MoveJ
+           metal_conveyer_
+           home
+       Case 3
+         MoveJ
+           conveyer_1_abov
+         Set DO[4]=On
+         MoveJ
+           conveyer_1
+           conveyer_1_abov
+         MoveJ
+           plastic_conveye
+         Set DO[4]=Off
+         MoveJ
+           home
+       Case 4
+         MoveJ
+           conveyer_1_abov
+         Set DO[4]=On
+         MoveJ
+           conveyer_1
+           conveyer_1_abov
+         MoveJ
+           table_wp
+           trash_ab
+         Set DO[4]=Off
+         MoveJ
+           table_wp
+           home
+       Case 5
+         MoveJ
+           metal_conveyer_
+         Set DO[4]=On
+         MoveJ
+           metal_conveyer
+         MoveJ
+           table_wp
+           trash_ab
+         Set DO[4]=Off
+         MoveJ
+           table_wp
+           home
+       Default Case
+         Set DO[4]=Off
+         MoveJ
+           home
+     Set DO[0]=Off
+     Set DO[1]=Off
+     sync()
+     'MoveJ'
